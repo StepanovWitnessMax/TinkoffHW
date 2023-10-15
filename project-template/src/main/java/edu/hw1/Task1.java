@@ -6,14 +6,19 @@ public final class Task1 {
     }
 
     private static final int SECONDSINMINUTE = 60;
+    private static final String UNCORRECT_INPUT = "Введено некорректное время!";
 
     public static Integer minutesToSeconds(String enteredTime) {
-        String[] enterTime = enteredTime.split(":");
-        if (enterTime[0].matches("\\d+") && (enterTime[1].matches("\\d\\d")
-                && (Integer.parseInt(enterTime[1]) < SECONDSINMINUTE))) {
-            return Integer.parseInt(enterTime[0]) * SECONDSINMINUTE + Integer.parseInt(enterTime[1]);
+        if (enteredTime == null) {
+            throw new IllegalArgumentException(UNCORRECT_INPUT);
         } else {
-            return -1;
+            String[] enterTime = enteredTime.split(":");
+            if (enterTime[0].matches("\\d+") && (enterTime[1].matches("\\d\\d")
+                    && (Integer.parseInt(enterTime[1]) < SECONDSINMINUTE))) {
+                return Integer.parseInt(enterTime[0]) * SECONDSINMINUTE + Integer.parseInt(enterTime[1]);
+            } else {
+                throw new IllegalArgumentException(UNCORRECT_INPUT);
+            }
         }
     }
 }

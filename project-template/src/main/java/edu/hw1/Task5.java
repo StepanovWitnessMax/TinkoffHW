@@ -11,7 +11,7 @@ public final class Task5 {
     }
 
     private static final int TEN = 10;
-    private static final int NINE = 9;
+    private static final int MAX_ONE_DIGITS_NUMBER = 9;
 
     public static Boolean isPalindrome(Integer checkNumber) {
         String strNumber = String.valueOf(checkNumber);
@@ -44,7 +44,7 @@ public final class Task5 {
             throw  new IllegalArgumentException("Число не должно быть null!");
         } else {
             Integer number = Math.abs(enterNumber);
-            while (number > NINE) {
+            while (number > MAX_ONE_DIGITS_NUMBER) {
                 if (isPalindrome(number)) {
                     return true;
                 } else {
