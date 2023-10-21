@@ -29,9 +29,7 @@ public final class ConsoleHangman {
                     LOGGER.info("Удачи!");
                     System.exit(0);
                 }
-                default -> {
-                    LOGGER.info("Некорректный ввод!");
-                }
+                default -> LOGGER.info("Некорректный ввод!");
             }
         }
     }

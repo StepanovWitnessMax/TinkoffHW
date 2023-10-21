@@ -1,13 +1,10 @@
 package edu.project1;
 
-import edu.hw1.EvenArrayUtils;
-import edu.hw1.Task6;
+
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 class DictionaryTest {
     private static final String FILENAME = "russianWords.txt";
