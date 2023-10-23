@@ -34,6 +34,13 @@ public class Game {
         return (letter.charAt(0) >= 'а' && letter.charAt(0) <= 'я') && !wrongLetters.contains(letter);
     }
 
+    private void letterProcessing(Integer index, String letter) {
+        if (!userWord.openLetter(index, letter)) {
+            wrongLetters.add(letter);
+            currentErrors++;
+        }
+    }
+
     public void startGame() {
 
         PrintStatus.output(this, userWord);
@@ -46,10 +53,7 @@ public class Game {
             String letter = (String.valueOf(checkInput.charAt(0))).toLowerCase();
             Integer index = userWord.getSecretWord().indexOf(letter);
             if (isCorrectLetter(letter)) {
-                if (!userWord.openLetter(index, letter)) {
-                    wrongLetters.add(letter);
-                    currentErrors++;
-                }
+                letterProcessing(index, letter);
             } else {
                 LOGGER.info("Введите корректную букву!!!");
             }
