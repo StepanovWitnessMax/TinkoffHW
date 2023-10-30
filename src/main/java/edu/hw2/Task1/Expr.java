@@ -11,30 +11,26 @@ public sealed interface Expr {
         }
     }
 
-    public record Negate(Constant constant) implements Expr {
+    public record Negate(Expr value) implements Expr {
 
         @Override
         public double evaluate() {
-            return (-1 * constant.evaluate());
+            return (-1 * value.evaluate());
         }
     }
 
-    public record Exponent(Multiplication exp, Constant constant) implements Expr {
-        public Exponent(Multiplication exp, double value) {
-            this(exp, new Constant(value));
+    public record Exponent(Expr exp, Expr degree) implements Expr {
+        public Exponent(Expr exp, double degree) {
+            this(exp, new Constant(degree));
         }
 
         @Override
         public double evaluate() {
-            return Math.pow(exp.evaluate(), constant.evaluate());
+            return Math.pow(exp.evaluate(), degree.evaluate());
         }
     }
 
-    public record Addition(Constant summand, Constant addend) implements Expr {
-        public Addition(Exponent summand, Constant addend) {
-            this(new Constant(summand.evaluate()), addend);
-            //this.addition=summand.value + addend.value;
-        }
+    public record Addition(Expr summand, Expr addend) implements Expr {
 
         @Override
         public double evaluate() {
@@ -42,7 +38,7 @@ public sealed interface Expr {
         }
     }
 
-    public record Multiplication(Addition firstMultiplier, Negate secondMultiplier) implements Expr {
+    public record Multiplication(Expr firstMultiplier, Expr secondMultiplier) implements Expr {
 
         @Override
         public double evaluate() {
