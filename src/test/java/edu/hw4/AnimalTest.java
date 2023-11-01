@@ -223,7 +223,8 @@ class AnimalTest {
     void task18Test() {
         //given
         //when
-        var processedList = Animal.task18(List.of(cat_one, cat_two),
+        var processedList = Animal.task18(
+            List.of(cat_one, cat_two),
             List.of(fish_one, dog_two),
             List.of(bird_two, dog_one, dog_three, fish_two)
         );
