@@ -28,7 +28,8 @@ class RequestHandlerTest {
         startServer();
         client.connect("личности");
         assertThat(outputStream.toString().replaceAll("\u0000", "").trim()).
-            isEqualTo("Клиент: личности\r\nСервер: Не переходи на личности там, где их нет");
+            isEqualTo("Клиент: личности" + System.lineSeparator()
+                + "Сервер: Не переходи на личности там, где их нет");
     }
 
     private void startServer() {
