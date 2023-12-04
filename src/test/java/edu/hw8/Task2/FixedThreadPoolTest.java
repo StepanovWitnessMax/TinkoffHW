@@ -22,6 +22,7 @@ public class FixedThreadPoolTest {
             threadPool.execute(() -> actual.add(Fibonacci.getFib(cur)));
         }
         try {
+            Thread.sleep(2000);
             threadPool.close();
         } catch (Exception e) {
             LOGGER.info(e.getMessage());

@@ -49,6 +49,11 @@ public final class FixedThreadPool implements ThreadPool {
     @Override
     public void close() {
         isShutdown.set(true);
+        for (Thread thread : threads) {
+            if (!thread.isInterrupted()) {
+                thread.interrupt();
+            }
+        }
     }
 
     private final class Worker extends Thread {
