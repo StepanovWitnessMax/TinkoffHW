@@ -8,10 +8,10 @@ import java.util.concurrent.RecursiveTask;
 
 public class PredicateFinder extends RecursiveTask<List<File>> {
     private final File root;
-    private final int fileSize;
+    private final long fileSize;
     private final String fileExtension;
 
-    public PredicateFinder(File root, int fileSize, String fileExtension) {
+    public PredicateFinder(File root, long fileSize, String fileExtension) {
         this.root = root;
         this.fileSize = fileSize;
         this.fileExtension = fileExtension;

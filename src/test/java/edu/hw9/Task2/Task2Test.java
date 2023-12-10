@@ -36,7 +36,8 @@ public class Task2Test {
         // given
         String testString = "src/main/resources/hw9";
         File test = new File(testString);
-        int size = 5;
+        //implicit size indication because git compresses the file
+        long size = new File("src/main/resources/hw9/Task2/01/123.txt").length();
         String extension = ".txt";
         List<File> answer;
 
