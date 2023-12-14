@@ -13,7 +13,7 @@ import org.apache.logging.log4j.Logger;
 
 public class RequestHandler implements Runnable {
 
-    private final static Logger LOGGER = LogManager.getLogger();
+    private static final Logger LOGGER = LogManager.getLogger();
     private static final int BUFFER_SIZE = 1024;
     private static final String CLIENT = "Клиент: ";
     private static final String SERVER = "Сервер: ";
@@ -47,7 +47,7 @@ public class RequestHandler implements Runnable {
                 }
             }
         } catch (IOException e) {
-            LOGGER.info(e.getStackTrace());
+            LOGGER.error(e.getStackTrace());
         } finally {
             semaphore.release();
         }
@@ -82,7 +82,7 @@ public class RequestHandler implements Runnable {
             try {
                 client.write(response);
             } catch (IOException e) {
-                LOGGER.info(e.getStackTrace());
+                LOGGER.error(e.getStackTrace());
             }
         }
     }

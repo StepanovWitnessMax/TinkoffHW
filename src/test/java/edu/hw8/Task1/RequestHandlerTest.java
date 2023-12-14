@@ -11,7 +11,7 @@ import static org.assertj.core.api.Assertions.*;
 
 class RequestHandlerTest {
 
-    private final static Logger LOGGER = LogManager.getLogger();
+    private static final Logger LOGGER = LogManager.getLogger();
     private static final String HOST = "localhost";
     private static final int PORT = 8080;
     private final ByteArrayOutputStream outputStream = new ByteArrayOutputStream();

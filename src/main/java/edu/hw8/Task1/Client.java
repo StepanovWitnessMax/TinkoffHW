@@ -13,7 +13,7 @@ import org.apache.logging.log4j.Logger;
 
 public class Client {
 
-    private final static Logger LOGGER = LogManager.getLogger();
+    private static final Logger LOGGER = LogManager.getLogger();
     private static final int BUFFER_SIZE = 1024;
     private static final List<String> CLIENT_MESSAGES = List.of("личности", "оскорбления", "глупый", "интеллект");
     private final InetSocketAddress hostAddress;
@@ -24,15 +24,15 @@ public class Client {
 
     @SuppressWarnings("checkstyle:RegexpSinglelineJava")
     public void connect(String messageToSend) {
-        try (SocketChannel client = SocketChannel.open(hostAddress)) {
+        try (SocketChannel server = SocketChannel.open(hostAddress)) {
             ByteBuffer buffer = ByteBuffer.wrap(messageToSend.getBytes(StandardCharsets.UTF_8));
             while (buffer.hasRemaining()) {
-                client.write(buffer);
+                server.write(buffer);
             }
             buffer.flip();
             buffer = ByteBuffer.allocate(BUFFER_SIZE);
             int bytesRead;
-            while ((bytesRead = client.read(buffer)) != -1) {
+            while ((bytesRead = server.read(buffer)) != -1) {
                 if (bytesRead == 0) {
                     continue;
                 }
@@ -40,7 +40,7 @@ public class Client {
                 break;
             }
         } catch (IOException e) {
-            LOGGER.info(e.getStackTrace());
+            LOGGER.error(e.getStackTrace());
         }
     }
 

@@ -14,7 +14,7 @@ import org.apache.logging.log4j.Logger;
 
 public class Server {
 
-    private final static Logger LOGGER = LogManager.getLogger();
+    private static final Logger LOGGER = LogManager.getLogger();
     private static final int NUMBER_OF_THREADS = 8;
     private static final int MAX_CONNECTIONS = 3;
     private final ExecutorService executor = Executors.newFixedThreadPool(NUMBER_OF_THREADS);
@@ -43,7 +43,7 @@ public class Server {
                 }
             }
         } catch (IOException e) {
-            LOGGER.info(e.getStackTrace());
+            LOGGER.error(e.getStackTrace());
         }
     }
 

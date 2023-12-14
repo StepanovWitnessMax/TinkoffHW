@@ -10,7 +10,8 @@ import static org.assertj.core.api.Assertions.*;
 
 public class FixedThreadPoolTest {
 
-    private final static Logger LOGGER = LogManager.getLogger();
+    private static final Logger LOGGER = LogManager.getLogger();
+
     @Test
     @DisplayName("basic test")
     public void getFib_shouldCalculateFibForDifferentNumbersInMultipleThreads() {
